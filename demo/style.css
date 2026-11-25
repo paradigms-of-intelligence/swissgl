@@ -1,6 +1,10 @@
-body {
+*, *::before, *::after {
     box-sizing: border-box;
-    background:black; margin: 0px;
+}
+
+body {
+    background: black;
+    margin: 0px;
     color: white;
     overflow: hidden;
     font-family: 'Roboto Mono', monospace;
@@ -10,6 +14,7 @@ body {
 #panel {
     width: 200px;
     position: fixed;
+    z-index: 10;
     background: rgba(0, 0, 0, 0.5);
 }
 
@@ -19,7 +24,8 @@ body {
 
 #cards {
     overflow: auto;
-    height: 95vh;
+    max-height: calc(100vh - 40px);
+    max-height: calc(100dvh - 40px);
 }
 
 .card {
@@ -35,46 +41,72 @@ body {
 }
 
 #demo {
-  width: 100%; height:100vh;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
 }
 
 #c {
-    width: 100%; height:100%;
-    background:black;
+    width: 100%;
+    height: 100%;
+    background: black;
     touch-action: none;
 }
 
-#gui { 
-    position: fixed; bottom:0px; right:50px
+#gui {
+    position: fixed;
+    bottom: 18px;
+    right: 74px;
+    z-index: 10;
+    margin-right: 0;
+    max-height: calc(100vh - 36px);
+    max-height: calc(100dvh - 36px);
+    overflow-y: auto;
 }
+
 #buttons {
-    position:fixed; bottom:10px; right:10px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 10;
 }
-button{
+
+button, .icon-btn {
     appearance: none;
-    min-width:48px; 
+    min-width: 48px;
     height: 40px;
     margin: 8px;
-    font-size: 24px;
+    padding: 0 10px;
+    font-size: 20px;
+    font-family: inherit;
     background-color: rgba(0, 0, 0, .5);
     color: white;
     border: none;
     text-align: center;
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
 }
-button:hover {
+
+button:hover, .icon-btn:hover {
     background-color: rgba(80, 80, 80, 0.8);
 }
-#buttons a {
-    text-decoration: none;
-    color: white;
-}
-#aboutButton {
-    position:fixed; top:10px; right:10px;
 
+#buttons svg {
+    width: 22px;
+    height: 22px;
+    display: block;
 }
+
+#aboutButton {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
 a {
     color: aquamarine;
 }
@@ -83,11 +115,17 @@ a {
     width: 90%;
     max-width: 400px;
     background-color: rgba(80, 80, 80, 0.9);
-    position: absolute;
-    top: 50%; left: 50%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 20;
     padding: 8px;
     border-radius: 8px;
     user-select: text;
+}
+
+.nowrap {
+    white-space: nowrap;
 }
   

@@ -44,9 +44,26 @@
     <div id="buttons">
         <button title="VR" onclick="toggleVR()" id="vrButton">VR</button>
         <button title="AR" onclick="toggleAR()" id="arButton">AR</button>
-        <button title="settings" onclick="toggleGui()" id="settingButton" style="font-size: 180%;">⛯</button>
-        <button title="source code"><a id='sourceLink' href="" target="_blank">&lt;&gt;</a></button>
-        <button title="fullscreen" onclick="fullscreen()"">⛶</button>
+        <button title="settings" onclick="toggleGui()" id="settingButton" aria-label="settings">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+        </button>
+        <a id="sourceLink" class="icon-btn" title="source code" aria-label="source code" href="" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="8 6 2 12 8 18"/>
+                <polyline points="16 6 22 12 16 18"/>
+            </svg>
+        </a>
+        <button title="fullscreen" onclick="fullscreen()" aria-label="fullscreen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="4 9 4 4 9 4"/>
+                <polyline points="15 4 20 4 20 9"/>
+                <polyline points="20 15 20 20 15 20"/>
+                <polyline points="9 20 4 20 4 15"/>
+            </svg>
+        </button>
     </div>
 </div>
 <button title="about" id="aboutButton" onclick="showAbout()">?</button>
@@ -54,12 +71,12 @@
     <p>
         <a href="https://github.com/google/swissgl"><b>SwissGL</b></a>
         is a prototype of a minimal yet expressive GPU library built on 
-        WebGL2. A single <nobr>"glsl()"</nobr> function runs GLSL code 
+        WebGL2. A single <span class="nowrap">"glsl()"</span> function runs GLSL code 
         snippets on the GPU and manages the resulting texture buffers.
     </p>
     <p>
         This page contains a few demos built using the library. Click 
-        the <nobr>"&lt;&gt;"</nobr> button to see the source of the current example.
+        the <span class="nowrap">"&lt;&gt;"</span> button to see the source of the current example.
     </p>
     <button style="font-size: 20px; margin: auto;" onclick="hideAbout()">hide</button>
 </div>

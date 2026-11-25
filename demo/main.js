@@ -227,23 +227,28 @@ class DemoApp {
 
     runDemo(name) {
         if (this.demo) {
-            if (this.gui) this.gui.destroy();
+            if (this.gui) {
+                this.gui.destroy();
+                this.gui.domElement.remove();
+            }
             if (this.demo.free) this.demo.free();
             this.glsl.reset();
             this.demo = this.gui = null;
         }
         if (!this.singleMode) location.hash = name;
         if (self.dat) {
-            this.gui = new dat.GUI();
-            this.gui.domElement.id = 'gui'
+            this.gui = new dat.GUI({autoPlace: false, closeOnTop: true, scrollable: false});
+            this.gui.domElement.id = 'gui';
+            document.body.appendChild(this.gui.domElement);
             this.gui.hide();
         }
         this.demo = new this.demos[name](this.withCamera, this.gui);
         if (this.gui && (this.gui.__controllers.length == 0)) {
             this.gui.destroy();
+            this.gui.domElement.remove();
             this.gui = null;
         }
-        setDisplay('#settingButton', this.gui?'block':'none');
+        setDisplay('#settingButton', this.gui?'flex':'none');
         if ($('#sourceLink')) {
             $('#sourceLink').href = `https://github.com/google/swissgl/blob/main/demo/${name}.js`;
         }
@@ -256,8 +261,8 @@ class DemoApp {
         setDisplay('#arButton', 'none');
         const tags = this.demo && this.demo.constructor.Tags;
         if (tags && tags.includes('3d') && !tags.includes('novr')) {
-            if (this.haveVR ) setDisplay('#vrButton', 'block');
-            if (this.haveAR ) setDisplay('#arButton', 'block');
+            if (this.haveVR ) setDisplay('#vrButton', 'flex');
+            if (this.haveAR ) setDisplay('#arButton', 'flex');
         }
     }
 
@@ -284,7 +289,7 @@ class DemoApp {
             Inc:[this.glsl_include].concat(params.Inc||[])}, target);
         Object.keys(this.demos).forEach(name=>{
             if (name == 'Spectrogram') return;
-            const dummyGui = new dat.GUI();
+            const dummyGui = new dat.GUI({autoPlace: false});
             const demo = new this.demos[name](withCamera, dummyGui);
             dummyGui.destroy();
             this.resetCamera();
